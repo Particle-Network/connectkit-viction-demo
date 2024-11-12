@@ -270,7 +270,8 @@ export default function Home() {
                     )}
                   </h2>
                   <h2 className="text-lg font-semibold mb-2 text-white flex items-center">
-                    Balance: {balance !== "" ? balance : "Loading..."}
+                    Balance: {balance !== "" ? balance : "Loading..."}{" "}
+                    {chain?.nativeCurrency.symbol}
                     <button
                       className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-1 px-2 ml-2 rounded transition duration-300 ease-in-out transform hover:scale-105 shadow-lg flex items-center"
                       onClick={fetchBalance}
@@ -306,7 +307,9 @@ export default function Home() {
                   <h2 className="text-2xl font-bold mb-2 text-white">
                     Send a transaction
                   </h2>
-                  <h2 className="text-lg">Send 0.01</h2>
+                  <h2 className="text-lg">
+                    Send 0.01 {chain?.nativeCurrency.symbol}
+                  </h2>
                   <input
                     type="text"
                     placeholder="Recipient Address"

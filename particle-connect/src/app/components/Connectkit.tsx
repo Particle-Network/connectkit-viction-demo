@@ -5,24 +5,43 @@ import { ConnectKitProvider, createConfig } from "@particle-network/connectkit";
 import { authWalletConnectors } from "@particle-network/connectkit/auth";
 import { defineChain } from "@particle-network/connectkit/chains";
 
-// Define the Lumia testnet
-const LumiaTestnet = defineChain({
-  id: 1952959480,
-  name: "Lumia Testnet",
+// Define the chains
+const victionTestnet = defineChain({
+  id: 89,
+  name: "Viction Testnet",
   nativeCurrency: {
     decimals: 18,
-    name: "LUMIA",
-    symbol: "LUMIA",
+    name: "VIC",
+    symbol: "VIC",
   },
   rpcUrls: {
     default: {
-      http: ["https://testnet-rpc.lumia.org"],
+      http: ["https://rpc-testnet.viction.xyz"],
     },
   },
   blockExplorers: {
-    default: { name: "Explorer", url: "https://testnet-explorer.lumia.org/" },
+    default: { name: "Explorer", url: "https://testnet.vicscan.xyz/" },
   },
   testnet: true,
+});
+
+const victionMainnet = defineChain({
+  id: 88,
+  name: "Viction",
+  nativeCurrency: {
+    decimals: 18,
+    name: "VIC",
+    symbol: "VIC",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://rpc.viction.xyz"],
+    },
+  },
+  blockExplorers: {
+    default: { name: "Explorer", url: "https://www.vicscan.xyz/" },
+  },
+  testnet: false,
 });
 
 const config = createConfig({
@@ -35,7 +54,7 @@ const config = createConfig({
     }),
   ],
 
-  chains: [LumiaTestnet],
+  chains: [victionTestnet, victionMainnet],
 });
 
 export const ParticleConnectkit = ({ children }: React.PropsWithChildren) => {
